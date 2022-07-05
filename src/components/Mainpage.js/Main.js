@@ -3,23 +3,15 @@ import "./Main.css";
 
 export default function Main() {
   const [colour, setColour] = useState("saphhire blue");
-  const [storage, setStorage] = useState("big");
-  const [ram, setRam] = useState("big");
+  const [storage, setStorage] = useState("128GB");
+  const [ram, setRam] = useState("4GB");
 
-  const storageHandler = () => {
-    if (storage === "small") {
-      setStorage("big");
-    } else {
-      setStorage("small");
-    }
+  const storageHandler = (e) => {
+    setStorage(e.target.className);
   };
 
-  const ramHandler = () => {
-    if (ram === "small") {
-      setRam("big");
-    } else {
-      setRam("small");
-    }
+  const ramHandler = (e) => {
+    setRam(e.target.className);
   };
 
   const clickHandler = (e) => {
@@ -102,24 +94,28 @@ export default function Main() {
         <div className="product__options">
           <div className="product__options__leftdiv">
             <p>
-              Storage : <span>{storage === "big" ? "128GB" : "64GB"}</span>
+              Storage : <span>{storage}</span>
               <div className="product__options__innerdiv">
-                <div onClick={storageHandler}>
+                <div className="64GB" onClick={storageHandler}>
                   <div className="ui_div"></div>64 GB
                 </div>
-                <div onClick={storageHandler}> 128 GB</div>
+                <div className="128GB" onClick={storageHandler}>
+                  128 GB
+                </div>
               </div>
             </p>
           </div>
           <div className="product__options__leftdiv">
             <p>
-              Ram : <span>{ram === "big" ? "4GB" : "2GB"}</span>
+              Ram : <span>{ram}</span>
             </p>
             <div className="product__options__innerdiv">
-              <div onClick={ramHandler}>
+              <div className="2GB" onClick={ramHandler}>
                 <div className="ui_div"></div>2 GB
               </div>
-              <div onClick={ramHandler}> 4 GB</div>
+              <div className="4GB" onClick={ramHandler}>
+                4 GB
+              </div>
             </div>
           </div>
         </div>
